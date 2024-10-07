@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Navigation</title>
+    <style>
+        body {
+            background-color: #0f2c5f; /* 배경색 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            gap: 60px; /* 카드 사이의 간격을 더 넓게 설정 */
+        }
+        .card {
+            width: 450px; /* 카드 너비를 더 크게 설정 (300px의 1.5배) */
+            height: 750px; /* 카드 높이를 더 크게 설정 (500px의 1.5배) */
+            background: linear-gradient(to bottom right, #2a5caa, #103c75); /* 기본 배경색 설정 */
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 2.25em; /* 글자 크기도 1.5배로 설정 */
+            text-align: center;
+        }
+        .card:hover {
+            box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.5); /* 마우스 호버 시 강조 효과 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="advertiserCard">광고주 로그인</div>
+        <div class="card">일반 사용자</div>
+        <div class="card" id="influencerCard">인플루언서 로그인</div>
+    </div>
+    <script>
+        document.getElementById('advertiserCard').addEventListener('click', function() {
+            window.location.href = 'advertiser_login.html'; // 광고주 로그인 페이지로 이동
+        });
+
+        document.getElementById('influencerCard').addEventListener('click', function() {
+            window.location.href = 'influencer_login.html'; // 인플루언서 로그인 페이지로 이동
+        });
+    </script>
+</body>
+</html>

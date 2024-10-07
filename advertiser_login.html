@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Advertiser Login</title>
+    <style>
+        body {
+            background-color: #2f4b9d; /* 배경색 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            width: 600px; /* 너비를 더 크게 설정 (기존보다 증가) */
+            background: #3b5bdb;
+            padding: 50px; /* 패딩을 증가시켜 전체 배경이 더 커 보이도록 설정 */
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            color: white;
+            position: relative;
+            right: -20px; /* 전체 화면 기준으로 살짝 오른쪽으로 이동 */
+        }
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 15px; /* 입력 필드 높이 증가 */
+            margin: 15px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+        .button {
+            width: 100%;
+            padding: 20px; /* 버튼 높이 증가 */
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 2px solid #49e274;
+            background: transparent;
+            color: #49e274;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #49e274;
+            color: white;
+        }
+        .forgot-password {
+            text-align: right;
+            margin: 5px 0;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" id="username" class="input-field" placeholder="ID">
+        <input type="password" id="password" class="input-field" placeholder="Password">
+        <div class="forgot-password" id="forgotPassword">Forgot password?</div>
+        <div class="button" id="loginButton">Login</div>
+        <div class="button" id="registerButton">Register</div>
+    </div>
+
+    <script>
+        // 로그인 버튼 클릭 시
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // 간단한 인증 로직
+            if (username === 'advertiser' && password === 'password123') {
+                // 광고주 홈 화면으로 이동 (임시로 alert 사용)
+                alert('로그인 성공! 광고주 홈으로 이동합니다.');
+                window.location.href = 'advertiser_home.html';
+            } else {
+                alert('ID 또는 비밀번호가 잘못되었습니다. 다시 입력해주세요.');
+            }
+        });
+
+        // 회원가입 버튼 클릭 시
+        document.getElementById('registerButton').addEventListener('click', function() {
+            window.location.href = 'advertiser_register.html'; // 광고주 회원가입 페이지로 이동
+        });
+
+        // 비밀번호 찾기 클릭 시
+        document.getElementById('forgotPassword').addEventListener('click', function() {
+            window.location.href = 'forgot_password.html'; // 비밀번호 찾기 페이지로 이동
+        });
+    </script>
+</body>
+</html>

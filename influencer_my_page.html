@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Influencer My Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        .content-container {
+            margin-left: 250px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .profile-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .profile-section h2 {
+            color: #555;
+        }
+        .profile-item {
+            margin: 10px 0;
+        }
+        .profile-item label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body data-page="myPage">
+    <div class="content-container">
+        <h1>마이페이지</h1>
+        <div class="profile-section">
+            <h2>내 프로필 정보</h2>
+            <div class="profile-item">
+                <label>이름:</label>
+                <span>홍길동</span>
+            </div>
+            <div class="profile-item">
+                <label>이메일:</label>
+                <span>honggildong@example.com</span>
+            </div>
+            <div class="profile-item">
+                <label>전화번호:</label>
+                <span>010-1234-5678</span>
+            </div>
+            <div class="profile-item">
+                <label>주 플랫폼:</label>
+                <span>유튜브, 인스타그램</span>
+            </div>
+            <div class="profile-item">
+                <label>해시태그:</label>
+                <span>#패션 #뷰티 #일상</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 네비게이션 바 삽입 -->
+    <script src="navbar_influencer.js"></script>
+</body>
+</html>

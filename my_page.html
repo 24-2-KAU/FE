@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        .content-container {
+            margin-left: 250px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body data-page="myPage">
+    <div class="content-container">
+        <h1>마이페이지</h1>
+        <p>내 정보를 확인하고 수정할 수 있는 페이지입니다.</p>
+    </div>
+    <script src="navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Advertiser Home</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        .content-container {
+            margin-left: 250px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow-y: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body data-page="home">
+    <!-- 콘텐츠 영역 -->
+    <div class="content-container">
+        <h1>홈</h1>
+        <p>여기는 광고주 홈입니다. 이곳에서 전체 개요 및 최신 정보를 확인할 수 있습니다.</p>
+    </div>
+
+    <!-- 네비게이션 바 삽입 -->
+    <script src="navbar.js"></script>
+</body>
+</html>
