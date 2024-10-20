@@ -3,44 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="influencer_style.css"> <!-- 공통 CSS -->
+    <link rel="stylesheet" href="influencer_my_page.css"> <!-- 페이지별 고유 CSS -->
     <title>Influencer My Page</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            box-sizing: border-box;
-        }
-        .content-container {
-            margin-left: 250px;
-            padding: 20px;
-            box-sizing: border-box;
-            width: calc(100% - 250px);
-            height: 100vh;
-            overflow-y: auto;
-        }
-        h1 {
-            color: #333;
-        }
-        .profile-section {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-        .profile-section h2 {
-            color: #555;
-        }
-        .profile-item {
-            margin: 10px 0;
-        }
-        .profile-item label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-    </style>
 </head>
 <body data-page="myPage">
     <div class="content-container">
@@ -69,7 +34,6 @@
             </div>
         </div>
     </div>
-
     <!-- 네비게이션 바 삽입 -->
     <script src="navbar_influencer.js"></script>
 </body>
