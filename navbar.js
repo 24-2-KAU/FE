@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const pageName = document.body.dataset.page; // 현재 페이지를 식별하기 위해 body의 data-page 속성 사용
+    // 로그인 상태 확인
+    const ad_id = localStorage.getItem('ad_id');
+    if (!ad_id) {
+        alert('로그인이 필요합니다.');
+        window.location.href = 'advertiser_login.html';  // 로그인 페이지로 리디렉션
+    }
+
+    // 현재 페이지를 식별하기 위해 body의 data-page 속성 사용
+    const pageName = document.body.dataset.page;
 
     const navHTML = `
     <div class="nav-container">
@@ -11,6 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="nav-button ${pageName === 'notifications' ? 'active' : ''}" onclick="location.href='notifications.html'">알림</button>
         <button class="nav-button ${pageName === 'influencerList' ? 'active' : ''}" onclick="location.href='influencer_list.html'">가입된 인플루언서 목록</button>
         <button class="nav-button ${pageName === 'main' ? 'active' : ''}" onclick="location.href='index.html'">메인</button>
+        <button class="nav-button" id="logoutButton">로그아웃</button>
     </div>`;
+    
     document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+    // 로그아웃 버튼 클릭 이벤트 처리
+    document.getElementById('logoutButton').addEventListener('click', () => {
+        localStorage.removeItem('ad_id');  // 로컬 스토리지에서 광고주 ID 삭제
+        window.location.href = 'advertiser_login.html';  // 로그인 페이지로 이동
+    });
 });

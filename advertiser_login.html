@@ -41,6 +41,8 @@
                 const data = await response.json();
                 if (response.ok) {
                     if (data.message === 'Login success!') {
+                        // 로그인 성공 시, 로컬 스토리지에 광고주 ID 저장
+                        localStorage.setItem('ad_id', data.ad_id);
                         alert('로그인 성공! 광고주 홈으로 이동합니다.');
                         window.location.href = 'advertiser_home.html';  // 로그인 성공 후 홈으로 리디렉션
                     } else {
