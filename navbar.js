@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 로그인 상태 확인
-    const ad_id = localStorage.getItem('ad_id');
+    const ad_id = localStorage.getItem('ad_id');  // 로컬 스토리지에서 ad_id 가져옴
     if (!ad_id) {
         alert('로그인이 필요합니다.');
         window.location.href = 'advertiser_login.html';  // 로그인 페이지로 리디렉션
+    } else {
+        console.log("Logged in with ad_id:", ad_id);  // 디버깅 용도, ad_id 확인
     }
 
     // 현재 페이지를 식별하기 위해 body의 data-page 속성 사용

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,6 @@
     </div>
 
     <script>
-        // 로그인 버튼 클릭 시
         document.getElementById('loginButton').addEventListener('click', async function() {
             const ad_id = document.getElementById('ad_id').value;
             const password = document.getElementById('password').value;
@@ -39,17 +38,15 @@
                 });
 
                 const data = await response.json();
-                if (response.ok) {
-                    if (data.message === 'Login success!') {
-                        // 로그인 성공 시, 로컬 스토리지에 광고주 ID 저장
-                        localStorage.setItem('ad_id', data.ad_id);
-                        alert('로그인 성공! 광고주 홈으로 이동합니다.');
-                        window.location.href = 'advertiser_home.html';  // 로그인 성공 후 홈으로 리디렉션
-                    } else {
-                        alert('로그인 실패: ' + data.message);
-                    }
+                console.log('서버 응답:', data);  // 서버 응답 데이터 확인
+
+                if (response.ok && data.message === 'Login success!') {
+                    // 로그인 성공 시 로컬 스토리지에 ad_id 저장
+                    localStorage.setItem('ad_id', data.ad_id);  // 서버에서 받은 ad_id를 저장
+                    alert('로그인 성공! 광고주 홈으로 이동합니다.');
+                    window.location.href = 'advertiser_home.html';  // 로그인 성공 후 홈으로 리디렉션
                 } else {
-                    alert('서버 오류: ' + data.message);
+                    alert('로그인 실패: ' + data.message);
                 }
             } catch (error) {
                 console.error('오류:', error);
