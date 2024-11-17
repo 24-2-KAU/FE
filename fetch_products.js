@@ -50,7 +50,7 @@ async function startChat(ad_id, productName) {
     }
 
     try {
-        const response = await fetch('${window.config.apiURL}/api/chat/room/create', {
+        const response = await fetch(`${window.config.apiURL}/api/chat/room/create`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

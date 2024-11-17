@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log('인플루언서 데이터 요청 시작');
 
-    fetch('${window.config.apiURL}/api/influencers')
+    fetch(`${window.config.apiURL}/api/influencers`)
         .then(response => response.json())
         .then(data => {
             console.log('인플루언서 데이터 성공적으로 로드:', data);

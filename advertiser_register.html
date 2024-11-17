@@ -47,7 +47,7 @@
     
             // 프론트엔드에서 백엔드로 POST 요청
             try {
-                const response = await fetch('${window.config.apiURL}/api/users/signup', {
+                const response = await fetch(`${window.config.apiURL}/api/users/signup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

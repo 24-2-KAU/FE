@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         try {
-            await fetch('${window.config.apiURL}/api/chat/send', {
+            await fetch(`${window.config.apiURL}/api/chat/send`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chatRoom_id, sender_id: influencer_id, receiver_id: "광고주 ID", content })
