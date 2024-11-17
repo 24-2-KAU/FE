@@ -1,3 +1,3 @@
 window.config = {
-  apiURL: '${window.config.apiURL}',
+  apiURL: 'http://localhost:3000',
 };
