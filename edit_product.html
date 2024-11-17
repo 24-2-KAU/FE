@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- 공통 CSS -->
-    <link rel="stylesheet" href="upload_product.css"> <!-- 페이지별 고유 CSS -->
-    <title>상품 올리기</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="edit_product.css">
+    <title>상품 수정</title>
 </head>
-<body data-page="uploadProduct">
+<body data-page="editProduct">
     <div class="content-container">
-        <h1>상품 올리기</h1>
-        <form id="productForm" enctype="multipart/form-data">
+        <h1>상품 수정</h1>
+        <form id="editProductForm" enctype="multipart/form-data">
             <label for="product_name">상품 이름:</label>
             <input type="text" id="product_name" name="product_name" required><br><br>
             
@@ -41,17 +41,16 @@
             <label for="hashtag">해시태그:</label>
             <input type="text" id="hashtag" name="hashtag" required><br><br>
 
-            <!-- 상품 이미지 업로드 -->
             <label for="product_pic">상품 이미지:</label>
             <input type="file" id="product_pic" name="product_pic" accept="image/*"><br><br>
-            <img id="imagePreview" src="" alt="상품 이미지 미리보기" style="display:none; max-width: 300px;"/><br>
 
-            <button type="submit">상품 올리기</button>
+            <div id="imagePreviewContainer"></div> <!-- 이미지 미리보기 영역 추가 -->
+
+            <button type="submit">상품 수정</button>
         </form>
-        <div id="message"></div> <!-- 메시지를 표시할 div -->
+        <div id="message"></div> <!-- 성공/오류 메시지 표시 -->
     </div>
 
-    <script src="navbar.js"></script> <!-- 네비게이션 JS -->
-    <script src="upload_product.js"></script> <!-- 업로드 처리 JS -->
+    <script src="edit_product.js"></script>
 </body>
 </html>
