@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 인플루언서 채팅방 목록 불러오기
     async function loadChatRooms() {
         try {
-            const response = await fetch(`http://localhost:3000/api/chat/influencer/${influencer_id}`);
+            const response = await fetch(`${window.config.apiURL}/api/chat/influencer/${influencer_id}`);
             if (!response.ok) throw new Error('Network response was not ok');
             
             const data = await response.json();
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function loadMessages() {
         try {
-            const response = await fetch(`http://localhost:3000/api/chat/messages/${chatRoom_id}`);
+            const response = await fetch(`${window.config.apiURL}/api/chat/messages/${chatRoom_id}`);
             if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
             displayMessages(data.messages); 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         try {
-            await fetch('http://localhost:3000/api/chat/send', {
+            await fetch('${window.config.apiURL}/api/chat/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chatRoom_id, sender_id: influencer_id, receiver_id: "광고주 ID", content })

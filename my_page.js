@@ -8,7 +8,7 @@ async function deleteProduct(product_id) {
     if (!confirmDelete) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${product_id}/delete`, {
+        const response = await fetch(`${window.config.apiURL}/api/products/${product_id}/delete`, {
             method: 'DELETE'
         });
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/products/check?ad_id=${ad_id}`);
+        const response = await fetch(`${window.config.apiURL}/api/products/check?ad_id=${ad_id}`);
         
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         

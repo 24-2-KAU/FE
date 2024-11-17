@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (product_id) {
         try {
-            const response = await fetch(`http://localhost:3000/api/products/${product_id}`);
+            const response = await fetch(`${window.config.apiURL}/api/products/${product_id}`);
             if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
             
             const product = await response.json();
@@ -126,7 +126,7 @@ const encodeImageToBase64 = (file) => {
 // 상품 수정 요청 함수
 async function updateProduct(product_id, data) {
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${product_id}/edit`, {
+        const response = await fetch(`${window.config.apiURL}/api/products/${product_id}/edit`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json', // JSON 데이터 전송
