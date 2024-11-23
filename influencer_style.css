@@ -1,59 +1,100 @@
+/* Google Fonts 및 Font Awesome */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 /* 공통 스타일 */
 body {
     margin: 0;
     display: flex;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     height: 100vh;
     box-sizing: border-box;
+    color: #34495E;
 }
 
+/* 네비게이션 컨테이너 */
 .nav-container {
-    width: 250px;
-    background-color: #BEDAFA;
-    color: #fff;
+    width: 260px;
+    background: linear-gradient(to bottom, #A4D8F4, #82C8FA);
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
+    padding: 20px 0;
     box-sizing: border-box;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
 }
 
+/* 네비게이션 버튼 */
 .nav-button {
     width: 100%;
     background: none;
     border: none;
-    color: #fff;
+    color: #FFFFFF;
     padding: 15px 20px;
     text-align: left;
-    font-size: 1em;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease;
     display: flex;
     align-items: center;
+    gap: 15px;
+    border-radius: 10px;
+}
+
+.nav-button i {
+    font-size: 1.2rem;
+    color: #FFFFFF;
 }
 
 .nav-button:hover {
-    background-color: #BEDAFA;
+    background: #6CA0DC;
+    transform: scale(1.02);
 }
 
+/* 현재 페이지 표시 */
 .nav-button.active {
-    background-color: #6CA0DC;
-    color: #BEDAFA;
+    background: #5A9BD8;
+    color: #FFFFFF;
+    font-weight: 600;
 }
 
-/* 공통 콘텐츠 스타일 */
+/* 하단 버튼 컨테이너 */
+.nav-bottom-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* 로그아웃 버튼 */
+.nav-button.logout {
+    background: #82C8FA;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button.logout:hover {
+    background: #6CA0DC;
+}
+
+/* 콘텐츠 스타일 */
 .content-container {
-    margin-left: 250px;
+    margin-left: 260px;
     padding: 20px;
     box-sizing: border-box;
-    width: calc(100% - 250px);
+    width: calc(100% - 260px);
     height: 100vh;
     overflow-y: auto;
+    background: #EAF6FF;
 }
 
+/* 헤더 */
 h1 {
-    color: #BEDAFA;
+    color: #82C8FA;
+    font-size: 2rem;
 }

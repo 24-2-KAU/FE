@@ -1,5 +1,100 @@
-/* 마이페이지 고유 스타일 */
+/* 공통 컨테이너 스타일 */
 .content-container {
-    background-color: #fce4ec;
+    margin-left: 260px; /* 네비게이션 바 공간 */
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #FFFFFF, #0288D1); /* 부드러운 파란색 배경 */
     border-radius: 8px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* 헤더 스타일 */
+.content-container h1 {
+    text-align: center;
+    color: #0288D1; /* 첫 번째 코드와 동일한 색상 */
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 텍스트 스타일 */
+.content-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #34495E;
+}
+
+/* 상품 목록 스타일 */
+.content-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.content-container li {
+    background: linear-gradient(to bottom, #ffffff, #BBDEFB);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-container li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.content-container li img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 버튼 스타일 */
+.content-container button {
+    padding: 12px;
+    margin: 10px 5px;
+    background-color: #0288D1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.content-container button:hover {
+    background-color: #0277BD;
+    transform: translateY(-2px);
+}
+
+/* 메시지 스타일 */
+.content-container #message {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0288D1;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .content-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .content-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-container button {
+        font-size: 0.9rem;
+    }
 }

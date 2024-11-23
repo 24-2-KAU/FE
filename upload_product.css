@@ -1,56 +1,146 @@
-/* Upload Product Page Styles */
+/* 공통 스타일 */
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #BBDEFB); /* 부드러운 파스텔 블루 배경 */
+    color: #34495E;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* 스크롤은 콘텐츠 영역에서만 */
+}
+
+/* 콘텐츠 컨테이너 */
 .content-container {
-    margin-left: 250px; /* Leave space for the navigation */
+    margin-left: 260px; /* 네비게이션 바 공간 확보 */
     padding: 20px;
     box-sizing: border-box;
-    background-color: #e8f5e9;
+    background: linear-gradient(to bottom, #E3F2FD, #0288D1); /* 흰색 배경 */
     border-radius: 8px;
-    min-height: 100vh; /* Ensures the page fills the height */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
+/* 헤더 스타일 */
 h1 {
-    color: #4caf50;
+    text-align: center;
+    color: #0288D1; /* 네비게이션 색상과 조화 */
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* 폼 스타일 */
 form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, #FFFFFF, #BBDEFB); /* 부드러운 그라데이션 */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    font-size: 1.2em;
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 8px;
+    color: #34495E;
 }
 
 input[type="text"],
 input[type="number"],
+textarea,
+select,
 input[type="file"] {
     width: 100%;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 8px;
     border: 1px solid #ccc;
-    font-size: 1em;
+    font-size: 1rem;
+    background-color: #F9FAFB;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+input[type="file"]:focus {
+    border-color: #0288D1;
+    box-shadow: 0 0 5px rgba(2, 136, 209, 0.5);
+    outline: none;
+}
+
+/* 버튼 스타일 */
 button {
-    padding: 10px 20px;
-    background-color: #4caf50;
+    width: 100%;
+    padding: 12px;
+    background-color: #0288D1;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
-    font-size: 1em;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0277BD;
+    transform: translateY(-2px);
+}
+
+/* 이미지 미리보기 스타일 */
+#imagePreview {
+    display: none;
+    max-width: 300px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 메시지 표시 영역 */
+#message {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* 로딩 상태 */
+#message.loading {
+    color: #0288D1;
+    animation: fadeIn 1.2s infinite;
+}
+
+@keyframes fadeIn {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .content-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
 }

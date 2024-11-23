@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"> <!-- 공통 CSS -->
     <link rel="stylesheet" href="my_page.css"> <!-- 페이지별 고유 CSS -->
-    <title>My Page</title>
+    <title>마이페이지</title>
 </head>
 <body data-page="myPage">
+    <!-- 네비게이션 바는 navbar.js에서 로드됨 -->
+
+    <!-- 마이페이지 콘텐츠 -->
     <div class="content-container">
         <h1>마이페이지</h1>
         <p>내 정보를 확인하고 수정할 수 있는 페이지입니다.</p>
@@ -15,8 +18,9 @@
         <ul id="productList"></ul> <!-- 상품 목록이 표시될 영역 -->
         <div id="message"></div> <!-- 성공/오류 메시지 표시 -->
     </div>
+
     <script src="config/config.js"></script>
-    <script src="navbar.js"></script>
-    <script src="my_page.js"></script> <!-- 페이지별 스크립트 -->
+    <script src="navbar.js"></script> <!-- 네비게이션 바 로드 -->
+    <script src="my_page.js"></script> <!-- 페이지별 JS -->
 </body>
 </html>

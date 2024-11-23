@@ -1,73 +1,117 @@
 /* 전체 페이지 스타일 */
 body {
-    background-color: #BEDAFA; /* 배경색 설정 */
+    background: linear-gradient(to bottom, #EAF6FF, #CDEAFE);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif; /* 기본 글꼴 설정 */
+    font-family: 'Nunito', Arial, sans-serif;
+    color: #34495E;
 }
 
 /* 로그인 컨테이너 스타일 */
 .login-container {
-    width: 600px; /* 너비를 더 크게 설정 */
-    background: #6CA0DC;
-    padding: 50px; /* 패딩을 증가시켜 전체 배경이 더 커 보이도록 설정 */
+    width: 90%;
+    max-width: 700px; /* 컨테이너 크기를 2배로 증가 */
+    padding: 50px; /* 더 넓은 패딩 */
+    background: linear-gradient(to bottom right, #A4D8F4, #82C8FA);
     border-radius: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-    color: white;
-    position: relative;
-    right: 0px; /* 전체 화면 기준으로 살짝 오른쪽으로 이동 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column; /* 세로 방향 정렬 */
-    align-items: center; /* 수평 중앙 정렬 */
-    justify-content: center; /* 수직 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
+    color: white;
 }
 
-/* 로그인 제목 스타일 */
+/* 제목 스타일 */
 .login-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 2.2rem; /* 더 큰 폰트 */
+    margin-bottom: 30px;
+    font-weight: 700;
 }
 
 /* 입력 필드 스타일 */
 .input-field {
     width: 100%;
-    padding: 15px; /* 입력 필드 높이 증가 */
+    padding: 18px; /* 더 큰 필드 */
     margin: 15px 0;
-    border-radius: 8px;
+    border-radius: 12px;
     border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
     outline: none;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(130, 200, 250, 0.6);
 }
 
 /* 버튼 스타일 */
 .button {
     width: 100%;
-    padding: 20px; /* 버튼 높이 증가 */
+    padding: 18px; /* 더 큰 버튼 */
     margin: 15px 0;
-    border-radius: 8px;
-    border: 2px solid #ffffff;
-    background: transparent;
-    color: #f7f7f7;
+    border-radius: 12px;
+    border: none;
+    background: #82C8FA; /* 기본 색상 */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
-    transition: 0.3s;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 15px rgba(130, 200, 250, 0.3);
 }
 
 .button:hover {
-    background: #ffffff;
-    color: #6CA0DC;
+    background: #FF6B6B; /* 마우스 올렸을 때 빨간색 */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
 }
 
-/* 비밀번호 찾기 텍스트 스타일 */
+.button.secondary {
+    background: #6BB8E8; /* 회원가입 버튼 색상 */
+}
+
+.button.secondary:hover {
+    background: #FF6B6B;
+}
+
+/* 비밀번호 찾기 텍스트 */
 .forgot-password {
+    font-size: 1rem;
     text-align: right;
-    margin: 5px 0;
-    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
+    margin-top: -5px;
 }
 
 .forgot-password:hover {
     text-decoration: underline;
+    color: #FFFFFF;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .login-container {
+        padding: 30px;
+        width: 95%;
+    }
+
+    .button {
+        padding: 15px;
+    }
+
+    .input-field {
+        padding: 15px;
+    }
 }
