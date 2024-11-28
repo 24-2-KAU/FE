@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', Arial, sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #BBDEFB); /* 부드러운 파스텔 블루 배경 */
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
     color: #34495E;
     display: flex;
     flex-direction: column;

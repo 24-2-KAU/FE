@@ -14,7 +14,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     overflow-y: auto;
-    background: linear-gradient(to top, #0288D1, #B3E5FC); /* 배경색만 네비게이션과 조화롭게 변경 */
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
 }
 
 /* 헤더 스타일 */

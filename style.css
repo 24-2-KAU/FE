@@ -15,7 +15,8 @@ body {
 /* 네비게이션 컨테이너 */
 .nav-container {
     width: 260px;
-    background: linear-gradient(to bottom, #A4D8F4, #82C8FA); /* 파란색 계열 */
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
+    display: flex;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 /* 전체 페이지 스타일 */
 body {
-    background: linear-gradient(to bottom, #EAF6FF, #CDEAFE);
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
     min-height: 100vh;
     display: flex;
     justify-content: center;
