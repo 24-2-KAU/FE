@@ -33,9 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="nav-button ${pageName === "notifications" ? "active" : ""}" onclick="location.href='notifications.html'">
             <i class="fas fa-bell"></i> 알림
         </button>
-        <button class="nav-button ${pageName === "influencerList" ? "active" : ""}" onclick="location.href='influencer_list.html'">
-            <i class="fas fa-users"></i> 가입된 인플루언서 목록
-        </button>
         <div class="nav-bottom-buttons">
             <button class="nav-button ${pageName === "main" ? "active" : ""}" onclick="location.href='index.html'">
                 <i class="fas fa-globe"></i> 메인
@@ -52,6 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 로그아웃 버튼 이벤트
     document.getElementById("logoutButton").addEventListener("click", () => {
         localStorage.removeItem("ad_id"); // 로컬 스토리지에서 광고주 ID 삭제
-        window.location.href = "advertiser_login.html"; // 로그인 페이지로 이동
+        window.location.href = "index.html"; // 로그인 페이지로 이동
     });
 });

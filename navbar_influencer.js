@@ -43,6 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // 로그아웃 버튼 클릭 이벤트 처리
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('email');  // 로컬 스토리지에서 email 삭제
-        window.location.href = 'influencer_login.html';  // 로그인 페이지로 이동
+        window.location.href = 'index.html';  // 로그인 페이지로 이동
     });
 });
