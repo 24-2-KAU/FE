@@ -50,23 +50,62 @@ async function startChat(ad_id, productName) {
     }
 
     try {
-        const response = await fetch(`${window.config.apiURL}/api/chat/room/create`, {
+        // 이미 존재하는 채팅방인지 확인
+        const checkResponse = await fetch(`${window.config.apiURL}/room/check`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                ad_id: ad_id,
-                influencer_id: influencer_id,
-                initial_message: `${influencer_id}님이 '${productName}'에 대해 대화를 시작하고자 합니다.`
-            })
+            body: JSON.stringify({ ad_id, influencer_id })
         });
 
-        const data = await response.json();
-        if (data.message === '채팅방이 성공적으로 생성되었습니다.') {
-            window.location.href = 'influencer_messenger.html';
-        } else {
-            alert('채팅방 생성에 실패했습니다.');
+        if (!checkResponse.ok) {
+            throw new Error(`HTTP error! status: ${checkResponse.status}`);
         }
+
+        const checkData = await checkResponse.json();
+        console.log('Check Room Response Data:', checkData);
+
+        let chatRoomId;
+
+        if (checkData.exists) {
+            // Chat room already exists
+            chatRoomId = checkData.chatRoomId;
+            alert('이미 존재하는 채팅방으로 이동합니다.');
+        } else {
+            // 채팅방 만듦
+            const createResponse = await fetch(`${window.config.apiURL}/room/create`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ad_id: ad_id,
+                    influencer_id: influencer_id,
+                    initial_message: `${influencer_id}님이 '${productName}'에 대해 대화를 시작하고자 합니다.`
+                })
+            });
+
+            if (!createResponse.ok) {
+                throw new Error(`HTTP error! status: ${createResponse.status}`);
+            }
+
+            const createData = await createResponse.json();
+            console.log('Create Room Response Data:', createData);
+
+            if (createData.message === '채팅방이 성공적으로 생성되었습니다.') {
+                chatRoomId = createData.chatRoomId;
+            } else {
+                alert('채팅방 생성에 실패했습니다.');
+                return;
+            }
+        }
+
+        // Step 3: Establish WebSocket connection using Socket.IO
+        const socket = io(window.config.apiURL);
+
+        // Join the chat room via WebSocket
+        socket.emit('joinRoom', chatRoomId);
+
+        // Redirect to the chat interface after WebSocket setup
+        window.location.href = `influencer_messenger.html?chatRoomId=${chatRoomId}`;
     } catch (error) {
-        console.error('채팅방 생성 중 오류:', error);
+        console.error('채팅방 확인 또는 생성 중 오류:', error.message || error);
     }
 }

@@ -98,3 +98,16 @@ h1 {
     color: #82C8FA;
     font-size: 2rem;
 }
+
+.red-dot {
+    position: absolute;
+    top: 10px; /* 적절한 위치로 조정 */
+    right: 10px; /* 적절한 위치로 조정 */
+    width: 10px; /* 빨간 점 크기 */
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10;
+}
