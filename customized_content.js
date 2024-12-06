@@ -9,8 +9,7 @@ async function fetchProductRecommendations(channelId) {
             headers: {
                 "Content-Type": "application/json", // 요청 타입
                 "Accept": "application/json"        // 응답 타입
-            },
-            body: JSON.stringify({}) // 빈 Body (필요 시 데이터 추가)
+            }
         });
 
         if (!response.ok) {
@@ -42,7 +41,6 @@ document.getElementById('search-button').addEventListener('click', async () => {
     // API 호출
     await fetchProductRecommendations(channelId);
 });
-
 
 // 결과 표시 함수
 function displayProducts(products) {
