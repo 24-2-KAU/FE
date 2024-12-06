@@ -15,7 +15,7 @@ body {
     margin-left: 260px; /* 네비게이션 바 공간 확보 */
     padding: 20px;
     box-sizing: border-box;
-    background: linear-gradient(to bottom, #E3F2FD, #0288D1); /* 흰색 배경 */
+    background: linear-gradient(to bottom, #E3F2FD,#076db1); /* 흰색 배경 */
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
     min-height: 100vh;
@@ -30,13 +30,30 @@ h1 {
     margin-bottom: 20px;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-self: cemter;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory; /* 스크롤 스냅 */
+}
 /* 폼 스타일 */
 form {
-    background: linear-gradient(to bottom, #FFFFFF, #BBDEFB); /* 부드러운 그라데이션 */
+    background: linear-gradient(to bottom, #c7e2f9, #57a7d2); /* 부드러운 그라데이션 */
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    max-width: 1000px; /* 화면 전체를 채우도록 설정 */
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start; /* 스크롤 스냅 정렬 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group {
