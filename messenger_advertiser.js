@@ -266,3 +266,5 @@ document.getElementById('chatMessages').appendChild(typingIndicator);
 
 
 
+
+

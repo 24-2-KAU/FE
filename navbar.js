@@ -69,11 +69,15 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = 'advertiser_login.html';  // 로그인 페이지로 이동
     });
 
-    const socket = io('http://localhost:4000'); // 서버 주소로 변경
+    // 소켓 부분
+    const socket = io('http://localhost:4000', {
+        withCredentials: true,
+    });
     // 사용자가 로그인한 순간부터 알림 서버에 등록
     if (ad_id) {
+        console.log('Registering user with ad_id:', ad_id);
         socket.emit('registerUser', ad_id, () => {
-            console.log('User registered successfully with notification server:', ad_id);
+        console.log('User registered successfully:', ad_id);
         });
     }
 
