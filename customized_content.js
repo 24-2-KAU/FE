@@ -1,6 +1,37 @@
-// customized_content.js
+async function fetchProductRecommendations(channelId) {
+    try {
+        // 요청 URL
+        const url = `https://adinfluencerai.click/product_recommend/${channelId}`;
 
-document.getElementById('search-button').addEventListener('click', () => {
+        // API 호출
+        const response = await fetch(url, {
+            method: "POST", // POST 요청 사용
+            headers: {
+                "Content-Type": "application/json", // 요청 타입
+                "Accept": "application/json"        // 응답 타입
+            },
+            body: JSON.stringify({}) // 빈 Body (필요 시 데이터 추가)
+        });
+
+        if (!response.ok) {
+            throw new Error(`오류: ${response.status} - ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
+        // 결과 표시
+        console.log("API 응답 데이터:", data);
+        displayProducts(data.products);
+
+    } catch (error) {
+        console.error("데이터 가져오기 오류:", error);
+        const productContainer = document.getElementById("product-container");
+        productContainer.innerHTML = `<p class="error">추천 결과를 가져오는 중 오류가 발생했습니다.</p>`;
+    }
+}
+
+// 검색 버튼 이벤트 연결
+document.getElementById('search-button').addEventListener('click', async () => {
     const channelId = document.getElementById('channel-id').value.trim();
 
     if (!channelId) {
@@ -8,28 +39,14 @@ document.getElementById('search-button').addEventListener('click', () => {
         return;
     }
 
-    const url = `https://adinfluencerai.click/product_recommend/${channelId}`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error('데이터를 가져오는 데 실패했습니다.');
-            return response.json();
-        })
-        .then(data => {
-            if (data.products && data.products.length > 0) {
-                displayProducts(data.products);
-            } else {
-                alert('결과가 없습니다.');
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            alert('요청 처리 중 문제가 발생했습니다.');
-        });
+    // API 호출
+    await fetchProductRecommendations(channelId);
 });
 
+
+// 결과 표시 함수
 function displayProducts(products) {
-    const productContainer = document.getElementById('product-container');
+    const productContainer = document.getElementById("product-container");
     productContainer.innerHTML = ''; // 기존 콘텐츠 지우기
 
     products.forEach(product => {

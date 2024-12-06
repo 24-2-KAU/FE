@@ -1,6 +1,6 @@
 /* 공통 스타일 */
 body {
-    margin-left: 260px;
+    margin-left: 10px;
     font-family: 'Poppins', Arial, sans-serif;
     display: flex;
     flex-direction: column;
