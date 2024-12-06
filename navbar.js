@@ -39,10 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fas fa-bell"></i> 알림
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
-        <button class="nav-button ${pageName === "influencerList" ? "active" : ""}" onclick="location.href='influencer_list.html'">
-            <i class="fas fa-users"></i> 가입된 인플루언서 목록
-            <span id="messengerAlert" class="red-dot" style="display: none;"></span>
-        </button>
         <div class="nav-bottom-buttons">
             <button class="nav-button ${pageName === "main" ? "active" : ""}" onclick="location.href='index.html'">
                 <i class="fas fa-globe"></i> 메인
@@ -66,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('ad_id');  // 로컬 스토리지에서 email 삭제
         localStorage.removeItem('hasUnreadMessages'); // 플래그 삭제
-        window.location.href = 'advertiser_login.html';  // 로그인 페이지로 이동
+        window.location.href = 'index.html';  // 로그인 페이지로 이동
     });
 
     // 소켓 부분
