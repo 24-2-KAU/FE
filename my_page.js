@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <div class="product-info">
                     <h2>${product.product_name}</h2>
                     <p><strong>상품 가격:</strong> ${product.product_price}</p>
+                    <p><strong>상품 설명:</strong> ${product.product_description}</p>
                     <p><strong>광고 예산:</strong> ${product.budget}</p>
                     <p><strong>타겟 시청자 연령:</strong> ${product.viewer_age}</p>
                     <p><strong>타겟 시청자 성별:</strong> ${product.viewer_gender}</p>

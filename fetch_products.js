@@ -29,6 +29,7 @@ function displayProducts(products) {
                 <h2>${product.product_name}</h2>
                 <p><strong>광고주 ID:</strong> ${product.ad_id}</p>
                 <p><strong>가격:</strong> ${product.product_price}</p>
+                <p><strong>상품설명:</strong> ${product.product_description}</p>
                 <p><strong>예산:</strong> ${product.budget}</p>
                 <p><strong>연령대:</strong> ${product.viewer_age}</p>
                 <p><strong>성별:</strong> ${product.viewer_gender}</p>

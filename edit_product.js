@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // 입력 필드에 상품 데이터 미리 채우기
             document.getElementById("product_name").value = product.product_name;
             document.getElementById("product_price").value = product.product_price;
+            document.getElementById("product_description").value = product.product_description;
             document.getElementById("budget").value = product.budget;
             document.getElementById("viewer_age").value = product.viewer_age;
             document.getElementById("viewer_gender").value = product.viewer_gender;
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         // 기존 입력 필드의 값을 data 객체에 추가
         data.product_name = document.getElementById("product_name").value;
         data.product_price = document.getElementById("product_price").value;
+        data.product_description = document.getElementById("product_description").value;
         data.budget = document.getElementById("budget").value;
         data.viewer_age = document.getElementById("viewer_age").value;
         data.viewer_gender = document.getElementById("viewer_gender").value;
