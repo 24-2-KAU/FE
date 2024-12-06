@@ -2,7 +2,7 @@
 .content-container {
     padding: 20px;
     box-sizing: border-box;
-    background: linear-gradient(to bottom, #FFFFFF, #0288D1); /* 부드러운 파란색 배경 */
+    background: linear-gradient(to bottom, #d3e6f3, #076db1); /* 부드러운 파란색 배경 */
     border-radius: 8px;
     height: 100vh;
     overflow-y: auto;

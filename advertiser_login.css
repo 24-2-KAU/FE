@@ -15,7 +15,7 @@ body {
     width: 90%;
     max-width: 700px; /* 컨테이너 크기를 2배로 증가 */
     padding: 50px; /* 더 넓은 패딩 */
-    background: linear-gradient(to bottom right, #A4D8F4, #82C8FA);
+    background: linear-gradient(#ffffff);
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     display: flex;

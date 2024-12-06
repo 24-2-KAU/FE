@@ -1,12 +1,72 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Container Styles */
 .content-container {
+    max-width: 800px;
+    margin-left: 300px;
     background-color: #e3f2fd;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Friends List */
+.friends-container {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.friends-container h2 {
+    margin: 0 0 10px;
+}
+
+.friends-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.friends-container li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.friends-container li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Chat Room */
+.chat-room-container {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#chatRoomTitle {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#participants {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Message Container */
 .message-container {
     height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;
     background-color: #fff;
@@ -18,10 +78,103 @@
     background-color: #c8e6c9;
     align-self: flex-end;
     text-align: right;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
 }
 
 .received {
     background-color: #ffcdd2;
     align-self: flex-start;
     text-align: left;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.message-sender {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message-content {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.message-timestamp {
+    font-size: 0.8em;
+    color: #555;
+}
+
+.message-status {
+    font-size: 0.8em;
+    margin-left: 5px;
+    color: gray;
+}
+
+.message-status.read {
+    color: green;
+}
+
+.message-status.unread {
+    color: red;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    font-style: italic;
+    color: #777;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Message Input */
+#messageInput {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #42a5f5;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1e88e5;
+}
+
+
+/* Read/Unread Status */
+.message-status {
+    font-size: 0.8em; /* Slightly smaller font for the status */
+    margin-left: 5px; /* Spacing between the timestamp and status */
+    font-style: italic;
+}
+
+/* Read Status */
+.message-status.read {
+    color: green; /* Green for read messages */
+    font-weight: bold; /* Emphasize the "Read" status */
+}
+
+/* Unread Status */
+.message-status.unread {
+    color: red; /* Red for unread messages */
+    font-weight: bold; /* Emphasize the "Unread" status */
 }

@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         result.products.forEach(product => {
             const li = document.createElement('li');
-            li.id = `product-${product.product_id}`; // 각 상품에 고유 ID 부여
+            li.id = `product-${product.product_id}`;
             let productPicHTML = '';
 
             if (product.product_pic) {
@@ -54,23 +54,24 @@ document.addEventListener("DOMContentLoaded", async function () {
                     : `data:image/png;base64,${product.product_pic}`;
 
                 productPicHTML = `
-                    <p><strong>상품 이미지:</strong><br>
-                    <img src="${imageSrc}" alt="상품 이미지" style="max-width: 200px; height: auto;"></p>`;
+                    <img src="${imageSrc}" alt="상품 이미지" class="product-image" />`;
             } else {
                 productPicHTML = `<p><strong>상품 이미지:</strong> 이미지가 없습니다.</p>`;
             }
 
             li.innerHTML = `
-                <p><strong>상품 이름:</strong> ${product.product_name}</p>
-                <p><strong>상품 가격:</strong> ${product.product_price}</p>
-                <p><strong>광고 예산:</strong> ${product.budget}</p>
-                <p><strong>타겟 시청자 연령:</strong> ${product.viewer_age}</p>
-                <p><strong>타겟 시청자 성별:</strong> ${product.viewer_gender}</p>
-                <p><strong>플랫폼:</strong> ${product.platform}</p>
-                <p><strong>해시태그:</strong> ${product.hashtag}</p>
                 ${productPicHTML}
-                <button onclick="editProduct(${product.product_id})">수정</button>
-                <button onclick="deleteProduct(${product.product_id})">삭제</button>
+                <div class="product-info">
+                    <h2>${product.product_name}</h2>
+                    <p><strong>상품 가격:</strong> ${product.product_price}</p>
+                    <p><strong>광고 예산:</strong> ${product.budget}</p>
+                    <p><strong>타겟 시청자 연령:</strong> ${product.viewer_age}</p>
+                    <p><strong>타겟 시청자 성별:</strong> ${product.viewer_gender}</p>
+                    <p><strong>플랫폼:</strong> ${product.platform}</p>
+                    <p><strong>해시태그:</strong> ${product.hashtag}</p>
+                    <button onclick="editProduct(${product.product_id})">수정</button>
+                    <button onclick="deleteProduct(${product.product_id})">삭제</button>
+                </div>
             `;
             productList.appendChild(li);
         });

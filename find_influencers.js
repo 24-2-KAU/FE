@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // FastAPI 엔드포인트 호출
-            const response = await fetch("http://15.165.203.243:8000/recommend", {
+            const response = await fetch("https://adinfluencerai.click/recommend", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

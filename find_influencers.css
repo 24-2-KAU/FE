@@ -17,6 +17,25 @@ h1 {
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+p {
+    text-align: center;
+    color: #0288D1; /* 네비게이션과 조화된 색상 */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-self: cemter;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory; /* 스크롤 스냅 */
+}
+
 /* 검색 폼 스타일 */
 form {
     background: linear-gradient(to bottom, #ffffff, #BBDEFB); /* 흰색 배경 */
@@ -24,6 +43,13 @@ form {
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
     margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    max-width: 1000px;
+    height: 40vh; /* 화면 전체를 채우도록 설정 */
+    scroll-snap-align: start; /* 스크롤 스냅 정렬 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 label {
@@ -72,17 +98,32 @@ button:hover {
 }
 
 /* 결과 컨테이너 */
-#results-container {
-    margin-top: 20px;
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-self: cemter;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory; /* 스크롤 스냅 */
 }
 
 .result-item {
-    background-color: #FFFFFF;
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    width: 100%;
+    text-align: center;
+    max-width: 700px; /* 화면 전체를 채우도록 설정 */
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start; /* 스크롤 스냅 정렬 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .result-item h2 {

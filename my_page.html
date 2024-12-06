@@ -15,10 +15,12 @@
         <h1>마이페이지</h1>
         <p>내 정보를 확인하고 수정할 수 있는 페이지입니다.</p>
         <h2>내가 올린 상품 목록</h2>
-        <ul id="productList"></ul> <!-- 상품 목록이 표시될 영역 -->
+        <div class="form">
+            <ul id="productList"></ul> <!-- 상품 목록이 표시될 영역 -->
+        </div>
         <div id="message"></div> <!-- 성공/오류 메시지 표시 -->
     </div>
-
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <script src="config/config.js"></script>
     <script src="navbar.js"></script> <!-- 네비게이션 바 로드 -->
     <script src="my_page.js"></script> <!-- 페이지별 JS -->
