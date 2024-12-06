@@ -2,7 +2,7 @@
 
 /* Container Styles */
 .content-container {
-    margin-left: 390px; /* 네비게이션 바 여백 */
+    margin-left: 462px; /* 네비게이션 바 여백 */
     padding: 20px;
     box-sizing: border-box;
     background: linear-gradient(to bottom, #d3e6f3, #076db1);
@@ -12,22 +12,20 @@
 
 /* Friends List */
 .friends-container {
-    width: 130px;
-    margin-left: 260px; 
+    width: 200px;
+    margin-left: 261px; 
     background: linear-gradient(to bottom, #d3e6f3, #076db1);
     display: flex;
     color: #FFFFFF;
     text-align: center;
-    display: flex;
     flex-direction: column;
     padding: 20px 0;
     box-sizing: border-box;
-    height: 100vh;
+    height :100%;
     position: fixed;
     top: 0;
     left: 0;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
-    justify-content: space-between; /* 버튼 위치 조정 */
 }
 
 .friends-container h2 {
@@ -77,8 +75,13 @@
     border-radius: 8px;
     background: linear-gradient(to bottom, #d3e6f3, #076db1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 0px;
+    align-self: flex-end;
+    max-width: 100%;
+    word-wrap: break-word;
 }
+
+
 /* Message Container */
 .message-container {
     height: 400px;
@@ -93,18 +96,18 @@
 
 
 .sent {
-    background-color: #c8e6c9;
+    background-color: #ffffff;
     align-self: flex-end;
     text-align: right;
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
-    max-width: 70%;
+    margin: 5px 0 5px 30%; /* 왼쪽에만 30% 여백 추가 */
     word-wrap: break-word;
 }
 
 .received {
-    background-color: #ffcdd2;
+    background-color: #ffffff;
     align-self: flex-start;
     text-align: left;
     margin: 5px 0;
@@ -116,22 +119,26 @@
 
 .message-sender {
     display: block;
-    font-weight: bold;
+    color: 555;
+    font-size: 0.8em;
     margin-bottom: 5px;
 }
 
 .message-content {
-    display: block;
-    margin-bottom: 5px;
+    color: #076db1;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 100px;
 }
 
-.message-timestamp {
-    font-size: 0.8em;
+.message-timestamp{
+    display: block;
+    font-size: 0.1em;
     color: #555;
 }
 
 .message-status {
-    font-size: 0.8em;
+    font-size: 0.1em;
     margin-left: 5px;
     color: gray;
 }

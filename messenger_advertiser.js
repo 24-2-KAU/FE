@@ -234,7 +234,9 @@ function appendMessage(messageData, isCurrentUser = false) {
 
     messageElement.innerHTML = `
         <span class="message-sender">${isSender ? '나' : messageData.senderId}</span>
-        <span class="message-content">${messageData.content}</span>
+        <div class="form-contain">
+            <span class="message-content">${messageData.content}</span>
+        </div>
         <span class="message-timestamp">${formatTimestamp(messageData.sentAt)}</span>
         ${statusHTML}
     `;

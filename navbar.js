@@ -35,10 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fas fa-user"></i> 마이페이지
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
-        <button class="nav-button ${pageName === "notifications" ? "active" : ""}" onclick="location.href='notifications.html'">
-            <i class="fas fa-bell"></i> 알림
-            <span id="messengerAlert" class="red-dot" style="display: none;"></span>
-        </button>
         <div class="nav-bottom-buttons">
             <button class="nav-button ${pageName === "main" ? "active" : ""}" onclick="location.href='index.html'">
                 <i class="fas fa-globe"></i> 메인

@@ -45,18 +45,18 @@
         <!-- Chat Room -->
         <h1 id="chatRoomTitle">채팅방 제목</h1>
         <p id="participants">참여자 정보가 여기에 표시됩니다.</p>
-        
-        <!-- Chat Messages -->
-        <div id="chatMessages" class="message-container">
-            <!-- Messages will be dynamically added here -->
+        <div class="form-container">
+            <div id="chatMessages" class="message-container">
+                <!-- Messages will be dynamically added here -->
+            </div>
+            
+            <!-- Typing Indicator -->
+            <div id="typingIndicator" class="typing-indicator"></div>
+            
+            <!-- Message Input -->
+            <input type="text" id="messageInput" placeholder="메시지를 입력하세요" />
+            <button onclick="sendMessage()">전송</button>
         </div>
-        
-        <!-- Typing Indicator -->
-        <div id="typingIndicator" class="typing-indicator"></div>
-        
-        <!-- Message Input -->
-        <input type="text" id="messageInput" placeholder="메시지를 입력하세요" />
-        <button onclick="sendMessage()">전송</button>
     </div>
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <script src="config/config.js"></script>

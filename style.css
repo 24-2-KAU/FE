@@ -110,9 +110,9 @@ h1 {
 
 .red-dot {
     position: absolute;
-    top: 10px; /* 적절한 위치로 조정 */
-    right: 10px; /* 적절한 위치로 조정 */
-    width: 10px; /* 빨간 점 크기 */
+    top: 195px; /* 적절한 위치로 조정 */
+    right: 10px; 
+    width: 10px; 
     height: 10px;
     background-color: red;
     border-radius: 50%;
