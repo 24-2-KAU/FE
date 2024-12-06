@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="influencer_style.css">
     <link rel="stylesheet" href="influencer_home.css">
     <title>인플루언서 홈</title>
+    <script>
+        // URL에서 email 파라미터를 추출하여 로컬 스토리지에 저장
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+
+        if (email) {
+            localStorage.setItem('email', email);
+        }
+    </script>
 </head>
 <body data-page="home">
     <div class="content-container home-content">
@@ -17,14 +26,6 @@
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <script src="fetch_products.js"></script>
 
-    <script>
-        // URL에서 email 파라미터를 추출하여 로컬 스토리지에 저장
-        const urlParams = new URLSearchParams(window.location.search);
-        const email = urlParams.get('email');
-
-        if (email) {
-            localStorage.setItem('email', email);
-        }
-    </script>
+    
 </body>
 </html>
