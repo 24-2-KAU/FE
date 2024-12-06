@@ -28,7 +28,6 @@ p {
 .form-container{
     display: flex;
     flex-direction: column;
-    align-self: cemter;
     align-items: center;
     gap: 20px;
     width: 100%;
