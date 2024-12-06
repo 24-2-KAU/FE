@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('${window.config.apiURL}/api/products/random')
+    fetch(`${window.config.apiURL}/api/products/random`)
         .then(response => response.json())
         .then(data => {
             if (data.message === '랜덤 순서로 상품을 조회했습니다.') {

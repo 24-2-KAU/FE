@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="influencer_style.css">
     <link rel="stylesheet" href="influencer_home.css">
     <title>인플루언서 홈</title>
+    <script src="config/config.js"></script>
     <script>
         // URL에서 email 파라미터를 추출하여 로컬 스토리지에 저장
         const urlParams = new URLSearchParams(window.location.search);
@@ -21,7 +22,7 @@
         <!-- 상품 목록을 표시할 스크롤 가능한 컨테이너 -->
         <div id="product-container" class="product-list"></div>
     </div>
-    <script src="config/config.js"></script>
+    
     <script src="navbar_influencer.js"></script>
     <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
     <script src="fetch_products.js"></script>
