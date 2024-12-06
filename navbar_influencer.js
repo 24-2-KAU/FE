@@ -24,10 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fas fa-envelope"></i> 연락중인 메신저
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
-        <button class="nav-button ${pageName === 'myPage' ? 'active' : ''}" onclick="location.href='influencer_my_page.html'">
-            <i class="fas fa-user"></i> 마이페이지
-            <span id="messengerAlert" class="red-dot" style="display: none;"></span>
-        </button>
         <div class="nav-bottom-buttons">
             <button class="nav-button ${pageName === 'main' ? 'active' : ''}" onclick="location.href='index.html'">
                 <i class="fas fa-globe"></i> 메인
