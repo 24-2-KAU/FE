@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('logoutButton').addEventListener('click', () => {
         localStorage.removeItem('ad_id');  // 로컬 스토리지에서 email 삭제
         localStorage.removeItem('hasUnreadMessages'); // 플래그 삭제
-        window.location.href = 'advertiser_login.html';  // 로그인 페이지로 이동
+        window.location.href = 'index.html';  // 로그인 페이지로 이동
     });
 
     const socket = io('http://localhost:4000'); // 서버 주소로 변경

@@ -1,28 +1,33 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
+
 
 /* Container Styles */
 .content-container {
-    max-width: 800px;
-    margin-left: 300px;
-    background-color: #e3f2fd;
+    margin-left: 390px; /* 네비게이션 바 여백 */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
+    height: 100vh;
+    overflow-y: auto;
 }
 
 /* Friends List */
 .friends-container {
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 130px;
+    margin-left: 260px; 
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
+    display: flex;
+    color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-sizing: border-box;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between; /* 버튼 위치 조정 */
 }
 
 .friends-container h2 {
@@ -63,16 +68,29 @@ body {
     color: #555;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #d3e6f3, #076db1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
 /* Message Container */
 .message-container {
     height: 400px;
     overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;
+    align-items: center;
     background-color: #fff;
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
 
 .sent {
     background-color: #c8e6c9;
