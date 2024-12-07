@@ -148,34 +148,14 @@ function displayFriends(friends) {
             alert(`친구 ${friend.friend_id}와의 채팅을 시작합니다.`);
             receiverId = friend.friend_id;
             chatRoomId = `${currentUserId}_${friend.friend_id}`;
-            socket.emit('joinRoom', chatRoomId);
+            socket.emit('joinRoom', {chatRoomId,currentUserId});
             selectChatRoom(chatRoomId);
-
-            // 특정 송신자와의 채팅방에 접속한 경우에만 알림 제거
-            removeMessengerAlertIfApplicable(friend.friend_id);
-            socket.emit('clearNotification', { chatRoomId, receiverId: currentUserId });
+            // 메시지 읽음 이벤트 전송
+            socket.emit('messageRead', { chatRoomId, receiverId: currentUserId });
         };
 
         friendsContainer.appendChild(friendElement);
     });
-}
-
-function removeMessengerAlertIfApplicable(friendId) {
-    const messengerAlert = document.getElementById("messengerAlert");
-
-    // 현재 접속하려는 채팅방의 친구와의 알림인지 확인 후 제거
-    if (messengerAlert && hasNotificationFrom(friendId)) {
-        console.log("특정 송신자와의 채팅방에 접속, 알림 숨기기");
-        messengerAlert.style.display = "none"; // 빨간 점 숨기기
-    }
-}
-
-// 알림이 특정 친구로부터 온 것인지 확인하는 함수 (추가적인 로직 구현 필요)
-function hasNotificationFrom(friendId) {
-    // 이 부분은 실제 알림 데이터에 따라 구현해야 합니다.
-    // 예를 들어, 서버에서 받은 알림 데이터에 친구 ID가 포함되어 있다면 그 정보를 사용해 확인합니다.
-    // 여기서는 예시로 true를 반환합니다.
-    return true; // 실제 알림 정보를 바탕으로 로직 작성 필요
 }
 
 // 친구목록에서 친구를 선택하면 -> 즉, 채팅방을 선택하면 메세지히스토리 함수로 이동

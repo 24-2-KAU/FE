@@ -61,7 +61,7 @@ function sendMessage() {
 }
 
 socket.on('receiveMessage', (messageData) => {
-    console.log('messenger_advertiser - 메시지 수신:', messageData);
+    console.log('messenger_influencer - 메시지 수신:', messageData);
     const isCurrentUser = messageData.senderId === currentUserId;
     appendMessage(messageData, isCurrentUser); // UI 업데이트
 });
@@ -88,7 +88,7 @@ socket.on('registerUser', (userId, callback) => {
 
 // 친구목록 불러오기
 async function loadFriends() {
-    console.log("@@@@@@@@@@@@@@@@" + currentUserId);
+    
     try {
         const response = await fetch(`http://localhost:3000/api/friends`, {
             method: 'POST',
@@ -126,9 +126,11 @@ function displayFriends(friends) {
             alert(`친구 ${friend.friend_id}와의 채팅을 시작합니다.`);
             receiverId = friend.friend_id;
             chatRoomId = `${friend.friend_id}_${currentUserId}`;
-            socket.emit('joinRoom', chatRoomId);
+            socket.emit('joinRoom', {chatRoomId, currentUserId});
             console.log(`chatRoomId: ${chatRoomId}`);
             selectChatRoom(chatRoomId);
+            // 메시지 읽음 이벤트 전송
+            socket.emit('messageRead', { chatRoomId, receiverId: currentUserId });
         };
 
         friendsContainer.appendChild(friendElement);
