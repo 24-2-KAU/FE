@@ -211,12 +211,24 @@ function scrollToBottom(container) {
     }
 }
 
-// 타임스탬프 포맷팅
-function formatTimestamp(timestamp) {
-    const date = new Date(timestamp);
-    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')} ${date.toDateString()}`;
-}
+// 타임스탬프 포맷 함수
+function formatTimestamp(sentAt) {
+    // 만약 `sentAt`이 문자열로 넘어온다면 Date 객체로 변환
+    const date = new Date(sentAt);
 
+    // 유효한 날짜인지 확인
+    if (isNaN(date.getTime())) {
+        console.error('유효하지 않은 날짜입니다:', sentAt);
+        return 'Invalid Time';
+    }
+
+    // 시간만 HH:mm 형식으로 반환
+    return date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
+}
 // 입력 중 표시 (Typing Indicator 요소 추가)
 const typingIndicator = document.createElement('div');
 typingIndicator.id = 'typingIndicator';
