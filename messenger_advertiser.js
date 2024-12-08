@@ -65,9 +65,6 @@ function sendMessage() {
 
 socket.on('receiveMessage', (messageData) => {
     console.log('messenger_advertiser - 메시지 수신:', messageData);
-
-
-
     const isCurrentUser = messageData.senderId === currentUserId;
     appendMessage(messageData, isCurrentUser); // UI 업데이트
 });
@@ -84,24 +81,6 @@ socket.on('typing', ({ senderId }) => {
     }
 });
 
-socket.on('update read status', ({ chatRoomId, updatedMessages }) => {
-    updatedMessages.forEach(({ msg_id }) => {
-        const messageElement = document.getElementById(`message-${msg_id}`);
-        if (messageElement) {
-            const statusElement = messageElement.querySelector('.message-status');
-            if (statusElement) {
-                statusElement.textContent = ''; // 읽음 표시 제거
-                statusElement.classList.remove('unread');
-                statusElement.classList.add('read');
-            }
-        }
-    });
-});
-
-socket.on('updateReadStatusPrompt', ({ chatRoomId, receiverId }) => {
-    console.log(`Updating read status for chatRoomId: ${chatRoomId}, Receiver: ${receiverId}`);
-    socket.emit('readMark', { chatRoomId, receiverId });
-});
 
 socket.on('registerUser', (userId, callback) => {
     console.log(`registerUser event received for userId: ${userId}`);
@@ -110,10 +89,19 @@ socket.on('registerUser', (userId, callback) => {
     if (callback) callback(); // 클라이언트에 등록 성공 알림
 });
 
+socket.on('updateReadStatus', ({ chatRoomId, receiverId }) => {
+    console.log(`Update read status for chatRoomId=${chatRoomId}, receiverId=${receiverId}`);
+
+    // 현재 채팅방의 모든 송신 메시지를 읽음으로 표시
+    const messages = document.querySelectorAll('.sent .read-status');
+    messages.forEach((status) => {
+        status.innerText = '읽음'; // 읽음으로 표시
+    });
+});
 
 // 친구목록 불러오기
 async function loadFriends() {
-    console.log("@@@@@@@@@@@@@@@@" + currentUserId);
+    
     try {
         const response = await fetch(`http://localhost:3000/api/friends`, {
             method: 'POST',
@@ -161,11 +149,29 @@ function displayFriends(friends) {
     });
 }
 
-// 친구목록에서 친구를 선택하면 -> 즉, 채팅방을 선택하면 메세지히스토리 함수로 이동
 async function selectChatRoom(chatRoomId) {
     console.log('Selected Chat Room ID:', chatRoomId); // 선택된 chatRoom_id 확인 로그
+
+    // 메시지 히스토리 로드
     await loadMessageHistory(chatRoomId);
+
+    // 메시지 읽음 상태 서버로 전송
+    socket.emit('messageRead', { chatRoomId, receiverId: currentUserId }, (response) => {
+        if (response.success) {
+            console.log(`Chat Room ${chatRoomId} - 알림 제거 성공`);
+        } else {
+            console.error(`Chat Room ${chatRoomId} - 알림 제거 실패`, response.error);
+        }
+    });
+
+    // 클라이언트에서 알림 제거
+    const messengerAlert = document.getElementById("messengerAlert");
+    if (messengerAlert) {
+        messengerAlert.style.display = "none";
+        localStorage.setItem('hasUnreadMessages', 'false'); // 플래그 해제
+    }
 }
+
 
 // 메세지 히스토리 로드
 async function loadMessageHistory(chatRoomId) {
@@ -196,7 +202,6 @@ async function loadMessageHistory(chatRoomId) {
     }
 }
 
-// ui에 메세지 추가하기
 function appendMessage(messageData, isCurrentUser = false) {
     const chatMessagesContainer = document.getElementById('chatMessages');
 
@@ -205,15 +210,16 @@ function appendMessage(messageData, isCurrentUser = false) {
         return;
     }
 
-    // 현재 사용자가 송신자인지 확인
     const isSender = messageData.senderId === currentUserId;
 
     const messageElement = document.createElement('div');
-    messageElement.id = `message-${messageData.msg_id}`; // 메시지 ID 추가
-    messageElement.className = isSender ? 'sent' : 'received'; // 송신자/수신자에 따라 클래스 설정
+    messageElement.id = `message-${messageData.msg_id}`;
+    messageElement.className = isSender ? 'sent' : 'received';
 
-    let statusHTML = '';
-
+    // 읽음 상태 추가
+    const readStatus = isSender && messageData.readStatus === 1
+        ? '<span class="read-status">읽음</span>'
+        : '<span class="read-status">안읽음</span>';
 
     messageElement.innerHTML = `
         <span class="message-sender">${isSender ? '나' : messageData.senderId}</span>
@@ -221,7 +227,7 @@ function appendMessage(messageData, isCurrentUser = false) {
             <span class="message-content">${messageData.content}</span>
         </div>
         <span class="message-timestamp">${formatTimestamp(messageData.sentAt)}</span>
-        ${statusHTML}
+        ${isSender ? readStatus : ''}
     `;
 
     chatMessagesContainer.appendChild(messageElement);

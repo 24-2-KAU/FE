@@ -1,13 +1,16 @@
 // Socket.IO 클라이언트 연결
 const socket = io('http://localhost:3000'); // 서버 주소로 변경
 
-// 현재 로그인된 사용자 ID 가져오기
 const currentUserId = localStorage.getItem('email');
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded - Starting to register user with ID:', currentUserId);
-    loadFriends();
 
+    socket.emit('registerUser', currentUserId, () => {
+        console.log('User registered successfully:', currentUserId);
+        loadFriends();
+    });
+    
     const chatMessagesContainer = document.getElementById('chatMessages');
     if (!chatMessagesContainer) {
         console.error('chatMessagesContainer가 DOM에 없습니다.');
@@ -86,6 +89,16 @@ socket.on('registerUser', (userId, callback) => {
     if (callback) callback(); // 클라이언트에 등록 성공 알림
 });
 
+socket.on('updateReadStatus', ({ chatRoomId, receiverId }) => {
+    console.log(`Update read status for chatRoomId=${chatRoomId}, receiverId=${receiverId}`);
+
+    // 현재 채팅방의 모든 송신 메시지를 읽음으로 표시
+    const messages = document.querySelectorAll('.sent .read-status');
+    messages.forEach((status) => {
+        status.innerText = '읽음'; // 읽음으로 표시
+    });
+});
+
 // 친구목록 불러오기
 async function loadFriends() {
     
@@ -137,10 +150,27 @@ function displayFriends(friends) {
     });
 }
 
-// 친구목록에서 친구를 선택하면 -> 즉, 채팅방을 선택하면 메세지히스토리 함수로 이동
 async function selectChatRoom(chatRoomId) {
     console.log('Selected Chat Room ID:', chatRoomId); // 선택된 chatRoom_id 확인 로그
+
+    // 메시지 히스토리 로드
     await loadMessageHistory(chatRoomId);
+
+    // 메시지 읽음 상태 서버로 전송
+    socket.emit('messageRead', { chatRoomId, receiverId: currentUserId }, (response) => {
+        if (response.success) {
+            console.log(`Chat Room ${chatRoomId} - 알림 제거 성공`);
+        } else {
+            console.error(`Chat Room ${chatRoomId} - 알림 제거 실패`, response.error);
+        }
+    });
+
+    // 클라이언트에서 알림 제거
+    const messengerAlert = document.getElementById("messengerAlert");
+    if (messengerAlert) {
+        messengerAlert.style.display = "none";
+        localStorage.setItem('hasUnreadMessages', 'false'); // 플래그 해제
+    }
 }
 
 // 메세지 히스토리 로드
@@ -181,26 +211,30 @@ function appendMessage(messageData, isCurrentUser = false) {
         return;
     }
 
-    // 현재 사용자가 송신자인지 확인
     const isSender = messageData.senderId === currentUserId;
 
     const messageElement = document.createElement('div');
-    messageElement.id = `message-${messageData.msg_id}`; // 메시지 ID 추가
-    messageElement.className = isSender ? 'sent' : 'received'; // 송신자/수신자에 따라 클래스 설정
+    messageElement.id = `message-${messageData.msg_id}`;
+    messageElement.className = isSender ? 'sent' : 'received';
 
-    let statusHTML = '';
-
+    // 읽음 상태 추가
+    const readStatus = isSender && messageData.readStatus === 1
+        ? '<span class="read-status">읽음</span>'
+        : '<span class="read-status">안읽음</span>';
 
     messageElement.innerHTML = `
         <span class="message-sender">${isSender ? '나' : messageData.senderId}</span>
-        <span class="message-content">${messageData.content}</span>
+        <div class="form-contain">
+            <span class="message-content">${messageData.content}</span>
+        </div>
         <span class="message-timestamp">${formatTimestamp(messageData.sentAt)}</span>
-        ${statusHTML}
+        ${isSender ? readStatus : ''}
     `;
 
     chatMessagesContainer.appendChild(messageElement);
     scrollToBottom(chatMessagesContainer);
 }
+
 
 // 스크롤 아래로 내리기
 function scrollToBottom(container) {
