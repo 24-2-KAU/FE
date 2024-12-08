@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             let productPicHTML = '';
 
             if (product.product_pic) {
-                const imageSrc = product.product_pic.startsWith("data:image/")
-                    ? product.product_pic
-                    : `data:image/png;base64,${product.product_pic}`;
-
+                const imageSrc = product.product_pic
                 productPicHTML = `
                     <img src="${imageSrc}" alt="상품 이미지" class="product-image" />`;
             } else {
