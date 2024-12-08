@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
         <button class="nav-button ${pageName === 'customizedContent' ? 'active' : ''}" onclick="location.href='customized_content.html'">
-            <i class="fas fa-th"></i> 맞춤컨텐츠
+            <i class="fas fa-search"></i> 맞춤컨텐츠
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
         <button class="nav-button ${pageName === 'script' ? 'active' : ''}" onclick="location.href='script.html'">

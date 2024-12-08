@@ -49,9 +49,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             let productPicHTML = '';
 
             if (product.product_pic) {
-                const imageSrc = product.product_pic
-                productPicHTML = `
-                    <img src="${imageSrc}" alt="상품 이미지" class="product-image" />`;
+                const imageSrc = product.product_pic;
+                productPicHTML = `<img src="${imageSrc}" alt="상품 이미지" class="product-image" />`;
             } else {
                 productPicHTML = `<p><strong>상품 이미지:</strong> 이미지가 없습니다.</p>`;
             }
@@ -67,8 +66,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <p><strong>타겟 시청자 성별:</strong> ${product.viewer_gender}</p>
                     <p><strong>플랫폼:</strong> ${product.platform}</p>
                     <p><strong>해시태그:</strong> ${product.hashtag}</p>
-                    <button onclick="editProduct(${product.product_id})">수정</button>
-                    <button onclick="deleteProduct(${product.product_id})">삭제</button>
+                    <button onclick="editProduct('${product.product_id}')">수정</button>
+                    <button onclick="deleteProduct('${product.product_id}')">삭제</button>
                 </div>
             `;
             productList.appendChild(li);
