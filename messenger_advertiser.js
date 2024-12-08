@@ -1,5 +1,5 @@
 // 친구 목록 불러오기
-const socket = io('http://localhost:3000'); // 서버 주소로 변경
+const socket = io(`${window.config.apiURL}`); // 서버 주소로 변경
 
 const currentUserId = localStorage.getItem('ad_id');
 
@@ -103,7 +103,7 @@ socket.on('updateReadStatus', ({ chatRoomId, receiverId }) => {
 async function loadFriends() {
     
     try {
-        const response = await fetch(`http://localhost:3000/api/friends`, {
+        const response = await fetch(`${window.config.apiURL}/api/friends`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 'userId': currentUserId })

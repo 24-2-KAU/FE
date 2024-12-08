@@ -1,3 +1,3 @@
 window.config = {
-  apiURL: 'http://localhost:3000',
+  apiURL: 'https://api.ad-influencer.com',
 };
