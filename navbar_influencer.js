@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
          <button class="nav-button ${pageName === 'script' ? 'active' : ''}" onclick="location.href='script.html'">
-            <i class="fas fa-th"></i> 스크립트 생성
+            <i class="fas fa-file-alt"></i> 스크립트 생성
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
         <button id="messengerButton" class="nav-button ${pageName === "messenger" ? "active" : ""}" onclick="location.href='influencer_messenger.html'">
