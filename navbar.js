@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 소켓 부분
-    const socket = io('3.39.127.38:4000', {
+    const socket = io('api.ad-influencer.com:4000', {
         withCredentials: true,
     });
     // 사용자가 로그인한 순간부터 알림 서버에 등록
