@@ -19,7 +19,38 @@ document.getElementById('productForm').addEventListener('submit', async (event) 
 
     const formData = new FormData(event.target);
     const data = {};
+    const file = formData.get('product_pic')
 
+    if(!file || !(file instanceof File)){
+      alert("이미지를 선택하세요");
+      return;
+    }
+    
+    let Url;
+
+    try {
+      const lambdaResponse = await fetch('https://t6hh2eryfxwh3namlj4qie3osu0elpbo.lambda-url.ap-northeast-2.on.aws/',{
+        method:'POST',
+        body: file,
+        headers: {
+          'content-type': file.type,
+        },
+      });
+
+      lambdares = await lambdaResponse.json();
+      const {fileUrl} = lambdares;
+
+      if (!fileUrl) {
+        console.log('error: ',error);
+        throw new Error( `${error}}`);
+      }
+      Url=fileUrl;
+    }catch(Error){
+      console.log('람다에서 에러 발생',Error);
+      alert('사진 저장에 문제 발생');
+    }
+
+    /*
     const encodeImageToBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -38,29 +69,26 @@ document.getElementById('productForm').addEventListener('submit', async (event) 
             };
         });
     };
-
+    */
+    
     for (const [key, value] of formData.entries()) {
-        if (key === 'product_pic' && value instanceof File) {
-            try {
-                const base64Image = await encodeImageToBase64(value);
-                data.product_pic = base64Image; // 전체 Base64 데이터 추가
-            } catch (error) {
-                alert('이미지 인코딩에 실패했습니다.');
-                return;
-            }
-        } else {
+        if (key === 'product_pic') {          
+          data.product_pic = Url; // 전체 Base64 데이터 추가
+          console.log(data.product_pic);
+        }
+        else {
             data[key] = value;
         }
     }
-
+    
     const ad_id = localStorage.getItem('ad_id');
     if (ad_id) {
         data.ad_id = ad_id;
     } else {
         alert('로그인이 필요합니다. 광고주 ID를 찾을 수 없습니다.');
         return;
-    }
-
+    } 
+    
     try {
         const response = await fetch(`${window.config.apiURL}/api/products`, {
             method: 'POST',
