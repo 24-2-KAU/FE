@@ -67,10 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // 사용자가 로그인한 순간부터 알림 서버에 등록
     if (ad_id) {
-        console.log('Registering user with ad_id:', ad_id);
-        socket.emit('registerUser', ad_id, () => {
-        console.log('User registered successfully:', ad_id);
-        });
+        socket.emit('registerUser', ad_id);
     }
 
     // 서버에서 빨간 점 표시 업데이트 요청 수신
@@ -79,16 +76,24 @@ document.addEventListener("DOMContentLoaded", function () {
         showMessengerAlert();
     });
 
-    // 알림 제거 함수 (메시지 확인 시에만 알림 해제)
     document.getElementById('messengerButton').addEventListener('click', () => {
-        const messengerAlert = document.getElementById("messengerAlert");
-        if (messengerAlert) {
-            console.log("메신저 확인: 빨간 점 숨김");
-            messengerAlert.style.display = "none"; // 알림 숨기기
-            localStorage.setItem('hasUnreadMessages', 'false'); // 플래그 해제
-            socket.emit('clearMessengerAlert', { userId: ad_id }); // 서버에 빨간 점 해제 요청
-        }
+        console.log("메신저 확인: 서버에 메시지 상태 확인 요청");
+    
+        // 서버에 메시지 확인 상태 요청
+        socket.emit('messageRead', { chatRoomId: currentChatRoomId, receiverId: ad_id }, (response) => {
+            if (response.hasUnreadMessages) {
+                console.log("메시지 확인되지 않음: 빨간 점 유지");
+                localStorage.setItem('hasUnreadMessages', 'true');
+                showMessengerAlert();
+            } else {
+                console.log("모든 메시지 확인됨: 빨간 점 숨김");
+                const messengerAlert = document.getElementById("messengerAlert");
+                if (messengerAlert) messengerAlert.style.display = "none";
+                localStorage.setItem('hasUnreadMessages', 'false');
+            }
+        });
     });
+    
 });
 
 function showMessengerAlert() {

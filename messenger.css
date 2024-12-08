@@ -229,10 +229,11 @@ button:hover {
 
 .message-status.read {
     color: green;
+    font-weight: bold;
 }
-
 .message-status.unread {
     color: red;
+    font-weight: bold;
 }
 
 /* Typing Indicator */
