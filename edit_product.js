@@ -55,21 +55,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         data.viewer_gender = document.getElementById("viewer_gender").value;
         data.platform = document.getElementById("platform").value;
         data.hashtag = document.getElementById("hashtag").value;
-
+        let Url;
         // 새로운 이미지를 업로드한 경우에만 Base64로 변환
-        if (productPicFile) {
+        if (productPicFile) { 
             try {
-                const base64ProductPic = await encodeImageToBase64(productPicFile); // Base64로 변환
-                data.product_pic = base64ProductPic; // 변환된 이미지를 data 객체에 추가
+              const lambdaResponse = await fetch('https://t6hh2eryfxwh3namlj4qie3osu0elpbo.lambda-url.ap-northeast-2.on.aws/',{
+                method:'POST',
+                body: productPicFile,
+                headers: {
+                  'content-type': productPicFile.type,
+                },
+              });
+              lambdares = await lambdaResponse.json();
+              const {fileUrl} = lambdares;
+              if (!fileUrl) {
+                throw new Error( `건아 실수.`);
+              }
+              Url = fileUrl;
+              data.product_pic = Url; // 변환된 이미지를 data 객체에 추가
             } catch (error) {
                 alert('이미지 인코딩에 실패했습니다.');
                 return;
             }
         } else {
-            // 새 이미지를 업로드하지 않은 경우 기존 이미지 URL을 data 객체에 추가
-            const existingImageSrc = document.querySelector("#imagePreviewContainer img")?.src;
-            if (existingImageSrc) {
+            if(!Url){
+              const existingImageSrc = document.querySelector("#imagePreviewContainer img")?.src;
+              if (existingImageSrc) {
                 data.product_pic = existingImageSrc;
+              }
             }
         }
 
@@ -105,7 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 });
 
-// 이미지 파일을 Base64로 변환하는 함수
+/* 이미지 파일을 Base64로 변환하는 함수
 const encodeImageToBase64 = (file) => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -124,6 +137,7 @@ const encodeImageToBase64 = (file) => {
         };
     });
 };
+*/
 
 // 상품 수정 요청 함수
 async function updateProduct(product_id, data) {
