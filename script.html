@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="influencer_style.css"> <!-- 공통 CSS -->
+    <link rel="stylesheet" href="script.css"> <!-- 페이지별 고유 CSS -->
+    <title>Customized Content</title>
+</head>
+<body data-page="script">
+    <div class="content-container customized-content">
+        <h1>Generate Customized Content</h1>
+        <form id="script-form">
+            <input type="text" id="channelId" placeholder="Enter Channel ID" required>
+            <input type="text" id="productName" placeholder="Enter Product Name" required>
+            <input type="text" id="productDescription" placeholder="Enter Product Description" required>
+            <input type="number" id="productPrice" placeholder="Enter Product Price" required>
+            <input type="number" id="targetAge" placeholder="Enter Target Age" required>
+            <select id="targetGender" required>
+                <option value="" disabled selected>Select Target Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="unisex">Unisex</option>
+            </select>
+            <input type="text" id="hashtags" placeholder="Enter Hashtags (comma-separated)" required>
+            <button type="submit">Generate Script</button>
+        </form>
+        <div id="result-container">
+            <h2>Generated Script</h2>
+            <pre id="script-result"></pre>
+        </div>
+    </div>
+    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js"></script>
+    <script src="config/config.js"></script>
+    <script src="navbar_influencer.js"></script>
+    <script src="script.js"></script> <!-- 맞춤 콘텐츠 JS -->
+</body>
+</html>

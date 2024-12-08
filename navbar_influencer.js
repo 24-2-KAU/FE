@@ -20,10 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fas fa-th"></i> 맞춤컨텐츠
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
+         <button class="nav-button ${pageName === 'script' ? 'active' : ''}" onclick="location.href='script.html'">
+            <i class="fas fa-th"></i> 스크립트 생성
+            <span id="messengerAlert" class="red-dot" style="display: none;"></span>
+        </button>
         <button id="messengerButton" class="nav-button ${pageName === "messenger" ? "active" : ""}" onclick="location.href='influencer_messenger.html'">
             <i class="fas fa-envelope"></i> 연락중인 메신저
             <span id="messengerAlert" class="red-dot" style="display: none;"></span>
         </button>
+
         <div class="nav-bottom-buttons">
             <button class="nav-button ${pageName === 'main' ? 'active' : ''}" onclick="location.href='index.html'">
                 <i class="fas fa-globe"></i> 메인
