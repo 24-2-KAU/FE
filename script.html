@@ -11,22 +11,22 @@
     <div class="content-container customized-content">
         <h1>Generate Customized Content</h1>
         <form id="script-form">
-            <input type="text" id="channelId" placeholder="Enter Channel ID" required>
-            <input type="text" id="productName" placeholder="Enter Product Name" required>
-            <input type="text" id="productDescription" placeholder="Enter Product Description" required>
-            <input type="number" id="productPrice" placeholder="Enter Product Price" required>
-            <input type="number" id="targetAge" placeholder="Enter Target Age" required>
+            <input type="text" id="channelId" placeholder="Channel ID" required>
+            <input type="text" id="productName" placeholder="상춤이름" required>
+            <input type="text" id="productDescription" placeholder="상품설명" required>
+            <input type="number" id="productPrice" placeholder="상품가격" required>
+            <input type="number" id="targetAge" placeholder="광고나이" required>
             <select id="targetGender" required>
                 <option value="" disabled selected>Select Target Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="unisex">Unisex</option>
+                <option value="남자">Male</option>
+                <option value="여자">Female</option>
+                <option value="둘다">Unisex</option>
             </select>
-            <input type="text" id="hashtags" placeholder="Enter Hashtags (comma-separated)" required>
+            <input type="text" id="hashtags" placeholder="해쉬태그" required>
             <button type="submit">Generate Script</button>
         </form>
         <div id="result-container">
-            <h2>Generated Script</h2>
+            <h2>스크립트 만들기</h2>
             <pre id="script-result"></pre>
         </div>
     </div>
