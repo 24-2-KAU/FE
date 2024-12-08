@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
         } else {
-            if(!Url){
+            if(!data.product_pic){
               const existingImageSrc = document.querySelector("#imagePreviewContainer img")?.src;
               if (existingImageSrc) {
                 data.product_pic = existingImageSrc;
