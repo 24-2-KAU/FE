@@ -38,6 +38,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
         const response = await fetch(`${window.config.apiURL}/api/products/check?ad_id=${ad_id}`);
         
+        if (response.status === 404) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            const emptyMessage = document.createElement('p');
+            emptyMessage.textContent = '상품이 없습니다.';
+            productList.appendChild(emptyMessage);
+            return ;
+        }
+
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
         
         const result = await response.json();
