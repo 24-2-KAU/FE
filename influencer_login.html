@@ -16,6 +16,8 @@
 
     <script src="config/config.js"></script>
     <script>
+        localStorage.removeItem('ad_id');
+
         function login() {
             window.location.href = `${window.config.apiURL}/login`;
         }
