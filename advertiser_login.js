@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function () {
+    localStorage.removeItem('email');
+    const ad_id = localStorage.getItem('ad_id');
+    if (ad_id) {
+        console.log("Logged in with ad_id:", ad_id);
+        alert('로그인 세션이 유효합니다. 광고주 홈으로 이동합니다.');
+        window.location.href = 'advertiser_home.html';
+        return;
+    }
+});
+
 document.getElementById('loginButton').addEventListener('click', loginHandler);
 
 document.getElementById('registerButton').addEventListener('click', function () {
